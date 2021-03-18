@@ -102,7 +102,7 @@ if __name__ =='__main__':
     model.load_state_dict(torch.load(MODEL_PATH))
     model.eval()
 
-    x = Image.open('images/2.jpg').convert('RGB')
+    x = Image.open('../images/2.jpg').convert('RGB')
     y, feature_map, weight = predict(model, x)
     cam = create_cam(feature_map, weight, y, 1e-9, 1000, person_classes)
-    draw_cam(x, cam, 'outputs/cam.png')
+    draw_cam(x, cam, '../outputs/cam.png')
