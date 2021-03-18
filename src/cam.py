@@ -85,7 +85,7 @@ def create_cam(feature_map, weight, y, y_th, num_classes, target_classes):
 
 
 def draw_cam(image, cam, out_path):
-    im_cam = Image.fromarray(np.uint8(cam.detach().numpy())) \
+    im_cam = Image.fromarray(np.uint8(cam.tolist())) \
         .resize(x.size) \
         .convert('RGB')
     im_cam = im_cam.resize(x.size).convert('RGB')
@@ -99,7 +99,7 @@ if __name__ =='__main__':
                       516, 651, 699, 748, 901, 908, 928, 930]
 
     model = nn.Sequential(Features(), Head())
-    model.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
     model.eval()
 
     x = Image.open('../images/2.jpg').convert('RGB')
