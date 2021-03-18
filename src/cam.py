@@ -94,7 +94,7 @@ def draw_cam(image, cam, out_path):
 
 
 if __name__ =='__main__':
-    MODEL_PATH = 'models/epoch10.pth'
+    MODEL_PATH = '../models/epoch10.pth'
     person_classes = [124, 235, 236, 245, 316, 322, 380, 423,
                       516, 651, 699, 748, 901, 908, 928, 930]
 
